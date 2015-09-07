@@ -25,28 +25,26 @@
 
     </servlet>-->
 
-    <servlet>
-        <!--Declare the servlet name-->
+    <!--This is for Jersey 2.x-->
+    <!--<servlet>
+        &lt;!&ndash;Declare the servlet name&ndash;&gt;
         <servlet-name>RESTServer</servlet-name>
         <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
 
-        <!--This tells Jersey which class to use to handle the request-->
+        &lt;!&ndash;This tells Jersey which class to use to handle the request&ndash;&gt;
         <init-param>
             <param-name>jersey.config.server.provider.packages</param-name>
             <param-value>com.restserver</param-value>
         </init-param>
 
-        <!--This enables support for JSON-->
-        <!--<init-param>-->
-            <!--<param-name>com.sun.jersey.api.json.POJOMappingFeature</param-name>-->
-            <!--<param-value>true</param-value>-->
-        <!--</init-param>-->
-
     </servlet>
 
-    <!--This tells the server how the URL maps to servlets-->
+    &lt;!&ndash;This tells the server how the URL maps to servlets&ndash;&gt;
     <servlet-mapping>
         <servlet-name>RESTServer</servlet-name>
         <url-pattern>/service/*</url-pattern>
-    </servlet-mapping>
+    </servlet-mapping>-->
+
+    <!--For Jersey 2 with Servlet 3.0, we don't need the web.xml file.
+        The information about handling requests is in the ServletApplication. -->
 </web-app>

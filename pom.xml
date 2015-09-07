@@ -50,6 +50,7 @@
                 <version>2.6</version>
                 <configuration>
                     <webXml>web\WEB-INF\web.xml</webXml>
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
                 </configuration>
             </plugin>
         </plugins>
