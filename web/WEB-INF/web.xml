@@ -14,7 +14,7 @@
         &lt;!&ndash;This tells Jersey which class to use to handle the request&ndash;&gt;
         <init-param>
             <param-name>com.sun.jersey.config.property.packages</param-name>
-            <param-value>com.restserver</param-value>
+            <param-value>com.memories<param-value>
         </init-param>
 
         &lt;!&ndash;This enables support for JSON&ndash;&gt;
@@ -34,7 +34,7 @@
         &lt;!&ndash;This tells Jersey which class to use to handle the request&ndash;&gt;
         <init-param>
             <param-name>jersey.config.server.provider.packages</param-name>
-            <param-value>com.restserver</param-value>
+            <param-value>com.memories<param-value>
         </init-param>
 
     </servlet>
