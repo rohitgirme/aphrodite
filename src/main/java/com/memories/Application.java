@@ -11,6 +11,9 @@ import org.springframework.context.annotation.Configuration;
  * Created by rohitgirme on 1/10/16.
  */
 
+// Spring Boot detects spring-webmvc on the classpath. This flags the
+// application as a web application and activates key behaviors
+// such as setting up a DispatcherServlet to handle the REST calls.
 @Configuration
 @EnableAutoConfiguration
 @ComponentScan

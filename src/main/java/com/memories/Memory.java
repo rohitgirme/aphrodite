@@ -17,31 +17,15 @@ public class Memory {
     private List<String> tags;
     private Date createDate;
     private Date updateDate;
-    private String location;
+    private Location location;
     private List<String> photos;
 
-    public Date getUpdateDate() {
-        return updateDate;
+    public String getId() {
+        return id;
     }
 
-    public void setUpdateDate(Date updateDate) {
-        this.updateDate = updateDate;
-    }
-
-    public String getLocation() {
-        return location;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
-    }
-
-    public List<String> getPhotos() {
-        return photos;
-    }
-
-    public void setPhotos(List<String> photos) {
-        this.photos = photos;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getTitle() {
@@ -76,11 +60,27 @@ public class Memory {
         this.createDate = createDate;
     }
 
-    public String getId() {
-        return id;
+    public Date getUpdateDate() {
+        return updateDate;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setUpdateDate(Date updateDate) {
+        this.updateDate = updateDate;
+    }
+
+    public Location getLocation() {
+        return location;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
+    }
+
+    public List<String> getPhotos() {
+        return photos;
+    }
+
+    public void setPhotos(List<String> photos) {
+        this.photos = photos;
     }
 }

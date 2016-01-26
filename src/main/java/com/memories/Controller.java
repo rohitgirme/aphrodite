@@ -11,6 +11,9 @@ import java.util.List;
  * Created by rohitgirme on 1/10/16.
  */
 
+// This annotation exposes the methods as HTTP endpoints. The methods are invoked based on
+// criteria specified by the @RequestMapping annotation.
+// @ResponseBody means write the response back to the HTTP response instead of to a model etc.
 @RestController
 public class Controller {
 
@@ -23,6 +26,9 @@ public class Controller {
 
     private static final Logger logger = LoggerFactory.getLogger(Controller.class);
 
+    // Because Jackson 2 is on the classpath, Spring’s MappingJackson2HttpMessageConverter
+    // is automatically chosen to convert the Memory instance to JSON.
+    // JSON is chosen; since the Header has application type as JSON.
     @RequestMapping(value = "/memories", method = RequestMethod.GET)
     public List<Memory> getMemories() {
         logger.debug("### getMemories");
