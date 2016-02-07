@@ -11,35 +11,35 @@ import java.util.List;
 @Service
 public class MongoMemoryService implements MemoryService {
 
-    private final MemoriesRepository memoriesRepository;
+  private final MemoriesRepository memoriesRepository;
 
-    @Autowired
-    public MongoMemoryService(MemoriesRepository memoriesRepository) {
-        this.memoriesRepository = memoriesRepository;
-    }
+  @Autowired
+  public MongoMemoryService(MemoriesRepository memoriesRepository) {
+    this.memoriesRepository = memoriesRepository;
+  }
 
-    @Override
-    public Memory get(String id) {
-        return memoriesRepository.findOne(id);
-    }
+  @Override
+  public Memory get(String id) {
+    return memoriesRepository.findOne(id);
+  }
 
-    @Override
-    public void create(Memory memory) {
-        memoriesRepository.save(memory);
-    }
+  @Override
+  public Memory create(Memory memory) {
+    return memoriesRepository.save(memory);
+  }
 
-    @Override
-    public void update(Memory memory) {
-        memoriesRepository.save(memory);
-    }
+  @Override
+  public Memory update(Memory memory) {
+    return memoriesRepository.save(memory);
+  }
 
-    @Override
-    public void delete(String id) {
-        memoriesRepository.delete(id);
-    }
+  @Override
+  public void delete(String id) {
+    memoriesRepository.delete(id);
+  }
 
-    @Override
-    public List<Memory> getAll() {
-        return memoriesRepository.findAll();
-    }
+  @Override
+  public List<Memory> getAll() {
+    return memoriesRepository.findAll();
+  }
 }

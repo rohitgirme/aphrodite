@@ -8,8 +8,8 @@ import java.util.List;
 public interface MemoryService {
 
     Memory get(String id);
-    void create(Memory memory);
-    void update(Memory memory);
+    Memory create(Memory memory);
+    Memory update(Memory memory);
     void delete(String id);
     List<Memory> getAll();
 }
