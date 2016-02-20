@@ -1,4 +1,4 @@
-package com.memories;
+package com.memories.data;
 
 import org.springframework.data.annotation.Id;
 

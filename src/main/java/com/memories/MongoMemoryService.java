@@ -1,5 +1,6 @@
 package com.memories;
 
+import com.memories.data.Memory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,6 +32,11 @@ public class MongoMemoryService implements MemoryService {
   @Override
   public Memory update(Memory memory) {
     return memoriesRepository.save(memory);
+  }
+
+  @Override
+  public void updateImages(String memoryId, List<String> imagePaths) {
+    memoriesRepository.updateImages(memoryId, imagePaths);
   }
 
   @Override

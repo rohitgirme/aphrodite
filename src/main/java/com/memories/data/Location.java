@@ -1,4 +1,4 @@
-package com.memories;
+package com.memories.data;
 
 /**
  * Created by rohitgirme on 1/19/16.

@@ -1,19 +1,14 @@
 package com.memories;
 
+import com.memories.data.Memory;
+import com.memories.util.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.nio.file.FileSystems;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -27,7 +22,6 @@ import java.util.List;
 public class Controller {
 
   private final MemoryService memoryService;
-  private static final String rootDirectory = "/Users/rohitgirme/Documents/Projects/Memories/images";
 
   @Autowired
   public Controller(MemoryService memoryService) {
@@ -71,27 +65,20 @@ public class Controller {
   }
 
   @RequestMapping(value = "/uploadImage/{id}", method = RequestMethod.POST)
-  public void uploadFile(@RequestParam MultipartFile image, @PathVariable String id) {
+  // 'images' should be same as the key in FormData containing the images.
+  // 'id' is the model id to which these images belong to.
+  public void uploadFile(@RequestParam List<MultipartFile> images, @PathVariable String id) {
     logger.debug("### createMemory");
-    if (!image.isEmpty()) {
-      // Move to util
-      try {
-        Path memoryPath = FileSystems.getDefault().getPath(rootDirectory, id);
-        if (!Files.exists(memoryPath)) {
-          Files.createDirectory(memoryPath);
-        }
-
-        byte[] bytes = image.getBytes();
-        Path imagePath = Paths.get(memoryPath.toString()).resolve(image.getOriginalFilename());
-        BufferedOutputStream stream =
-            new BufferedOutputStream(new FileOutputStream(new File(imagePath.toString())));
-        stream.write(bytes);
-        stream.close();
-      } catch (IOException e) {
-        e.printStackTrace();
+    if (!images.isEmpty()) {
+      List<String> imagePaths = new ArrayList<>(images.size());
+      // Save all files in the right location.
+      // This is so that when requested by the browser, they are present.
+      for (MultipartFile image : images) {
+        FileUtils.saveFile(image, id);
+        imagePaths.add("images/" + id + "/" + image.getOriginalFilename());
       }
+      memoryService.updateImages(id, imagePaths);
     }
-    //get path and store in memory with id.
   }
 
   @ExceptionHandler
