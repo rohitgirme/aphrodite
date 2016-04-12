@@ -17,4 +17,6 @@ public interface MemoryService {
   void updateImages(String memoryId, List<String> imagePaths);
   void delete(String id);
   List<Memory> getAll();
+  List<Memory> getFiltered(int skip, int limit);
+  List<Memory> getTopMemories(int count);
 }

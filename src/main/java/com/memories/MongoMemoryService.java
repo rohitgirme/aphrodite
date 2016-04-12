@@ -48,4 +48,14 @@ public class MongoMemoryService implements MemoryService {
   public List<Memory> getAll() {
     return memoriesRepository.findAll();
   }
+
+  @Override
+  public List<Memory> getFiltered(int skip, int limit) {
+    return memoriesRepository.getFiltered(skip, limit);
+  }
+
+  @Override
+  public List<Memory> getTopMemories(int count) {
+    return memoriesRepository.getTopMemories(count);
+  }
 }

@@ -1,5 +1,7 @@
 package com.memories;
 
+import com.memories.data.Memory;
+
 import java.util.List;
 
 /**
@@ -7,5 +9,9 @@ import java.util.List;
  */
 public interface MemoriesRepositoryCustom {
 
-  public void updateImages(String memoryId, List<String> imagePaths);
+  void updateImages(String memoryId, List<String> imagePaths);
+
+  List<Memory> getFiltered(int skip, int limit);
+
+  List<Memory> getTopMemories(int count);
 }

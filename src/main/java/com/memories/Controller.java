@@ -1,6 +1,7 @@
 package com.memories;
 
 import com.memories.data.Memory;
+import com.memories.util.Constants;
 import com.memories.util.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -37,6 +38,26 @@ public class Controller {
   public List<Memory> getMemories() {
     logger.debug("### getMemories");
     return memoryService.getAll();
+  }
+
+  @RequestMapping(value = "/memories", method = RequestMethod.GET, params = {"number", "action"})
+  public List<Memory> getTopNMemories(@RequestParam int number, @RequestParam String action) {
+    logger.debug("### getTopNMemories");
+    List<Memory> topMemories;
+    switch (action) {
+      case Constants.TOP:
+        topMemories = memoryService.getTopMemories(number);
+        break;
+      default:
+        topMemories = memoryService.getAll();
+    }
+    return topMemories;
+  }
+
+  @RequestMapping(value = "/memories", method = RequestMethod.GET, params = {"skip", "limit"})
+  public List<Memory> getFilteredMemories(@RequestParam int skip, @RequestParam int limit) {
+    logger.debug("### getFilteredMemories");
+    return memoryService.getFiltered(skip, limit);
   }
 
   @RequestMapping(value = "/memories/{id}", method = RequestMethod.GET)
