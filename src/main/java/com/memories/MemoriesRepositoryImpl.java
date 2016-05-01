@@ -37,9 +37,9 @@ public class MemoriesRepositoryImpl implements MemoriesRepositoryCustom {
 
   @Override
   public List<Memory> getFiltered(int skip, int limit) {
-    // db.memory.find().sort({createDate: 1}).limit(5).skip(9)
+    // db.memory.find().sort({createDate: -1}).limit(5).skip(9)
     Query query = new Query();
-    query.with(new Sort(Sort.Direction.ASC, Constants.CREATE_DATE));
+    query.with(new Sort(Sort.Direction.DESC, Constants.CREATE_DATE));
     query.limit(limit);
     query.skip(skip);
     return mongoTemplate.find(query, Memory.class);
